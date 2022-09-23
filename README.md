@@ -14,7 +14,7 @@ Tool for manually-annotating trajectories during defensive behaviors and subsequ
 
 ### Generate timing data
 
-![](https://github.com/kpc-simone/dmbs-tracking/blob/main/docs/keytimings.png)
+![](https://github.com/kpc-simone/path-annotatorV2/blob/main/docs/annotated_path.png)
 
 ### Run the script and link timing data
 
