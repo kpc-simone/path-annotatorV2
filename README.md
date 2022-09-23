@@ -62,10 +62,4 @@ Trails of the animal's historical position will appear as you progress with labe
 
 When complete, the trial data will be saved in the`annotated-paths` folder. The script will generate a visualization of the animal's trajectory. 
 
-
-
-
-
-
-
-
+![](https://github.com/kpc-simone/path-annotatorV2/blob/main/docs/annotated_path.png)
