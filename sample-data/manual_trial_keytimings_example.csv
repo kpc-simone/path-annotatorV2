@@ -1,0 +1,16 @@
+animal,sex,phenotype,day,trial,shadowON-abs,shadowOFF-abs,defensive strategy
+m563,F,experimental,1,1,2,10,no response
+m563,F,experimental,1,2,14,22,freeze
+m563,F,experimental,1,3,26,34,freeze
+m563,F,experimental,1,4,38,46,no response
+m563,F,experimental,1,5,50,58,freeze
+m567,M,experimental,1,1,2,10,freeze
+m567,M,experimental,1,2,14,22,panic
+m567,M,experimental,1,3,26,34,panic
+m567,M,experimental,1,4,38,46,panic
+m567,M,experimental,1,5,50,58,freeze
+m971,F,control,1,1,1.89,8.03,escape
+m971,F,control,1,2,12.09,18.4,escape
+m971,F,control,1,3,22.46,28.785,escape
+m971,F,control,1,4,32.761,39.225,escape
+m971,F,control,1,5,43.14,50.095,escape
