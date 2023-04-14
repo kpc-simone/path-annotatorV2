@@ -9,11 +9,22 @@ import cv2 as cv2
 import sys,os
 import math
 import tracemalloc
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('depth', type = int,
+                    help = 'The depth of the arena in mm.')
+parser.add_argument('width', type = int,
+                    help = 'The width of the arena in mm.')
+parser.add_argument('extra_time', type = float, nargs = '?', const = 1., default = 1.,
+                    help = 'The number of seconds to include in the annotation after the shadow disappears. Default is 1.')
 
 if __name__ == '__main__':
-    depth = float(sys.argv[1])
-    width = float(sys.argv[2])
-
+    args = parser.parse_args()
+    depth = args.depth
+    width = args.width
+    extra_time = args.extra_time
+    
 sys.path.append(os.path.join(os.path.dirname(__file__),'src'))
 from image_processing import *
 from visualization import *
@@ -32,7 +43,7 @@ print(ktdf.head())
 while(True):    
     vidcap = cv2.VideoCapture(askopenfilename(
         title = 'Select video for which to annotate paths',
-        filetypes=[('Video Files', '*.avi; *.MP4'), ('All Files', '*.*')]
+        filetypes = [('Video Files', '*.avi; *.MP4'), ('All Files', '*.*')]
         )
     )
 
@@ -65,14 +76,16 @@ while(True):
         
         # TODO add 'timing' argument to pass to get_interval
         t0,pos_0,pos_f,outcome = get_interval(asdf,'trial',trial,timing='full')
+        pos_f += ( extra_time - 1 )
+        # print(pos_0,pos_f,pos_f-pos_0,FPS,(pos_f-pos_0)*FPS)
         
         vidcap.set(cv2.CAP_PROP_POS_FRAMES,int(pos_f*FPS))
         vid_index_final = int(vidcap.get(cv2.CAP_PROP_POS_FRAMES))
-        #print(vid_index_final)
+        # print(vid_index_final)
         
         vidcap.set(cv2.CAP_PROP_POS_FRAMES,int(pos_0*FPS))
         vid_index_start = int(vidcap.get(cv2.CAP_PROP_POS_FRAMES))
-        print('skipping to {} trial {} at {}'.format(outcome,trial,vidcap.get(cv2.CAP_PROP_POS_FRAMES)/FPS))
+        print('skipping to {} trial {} starting at {}s. annotating {}s : {}s.'.format(outcome,trial,round(pos_0,3)+1,round(vidcap.get(cv2.CAP_PROP_POS_FRAMES)/FPS,3),round(pos_f,3)))
         out_filename = '{}-{}-{}-d{}-t{}-{}'.format(phenotype,sex,animal,day,trial,outcome)
         
         ts = np.linspace( pos_0 - t0, pos_f - t0, vid_index_final - vid_index_start )

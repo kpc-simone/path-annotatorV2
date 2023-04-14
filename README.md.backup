@@ -22,7 +22,7 @@ Tool for manually-annotating trajectories during defensive behaviors and subsequ
 python annotate_position_loop.py [arena depth (mm)] [arena width (mm)] [extra time (s)] 
 ```
 
-Where `extra time` is the number of seconds to include in the annotation after the shadow has disappeared. The default is 1 second.
+Where `extra time` is the number of seconds to include in the annotation after the shadow has disappeared. The default is 1 second
 
 Dialog windows will prompt you to select
 1. CSV file containing trial key timings, as specified above
