@@ -28,7 +28,11 @@ def plot_trajectory(xs,ys,outcome,arenaSize):
     
     fig, axes = plt.subplots(1,1,squeeze=False,figsize=(3,5))
     
-    axes[0,0].plot(xs,ys,color=behavior_colors[outcome],linewidth=1.5,alpha=0.5)
+    if outcome in behavior_colors.keys():
+        color_ = behavior_colors[outcome]
+    else:
+        color_ = 'dimgray'
+    axes[0,0].plot(xs,ys,color=color_,linewidth=1.5,alpha=0.5)
     
     xmin = -width/2/1000
     xmax = (width-width/2)/1000
