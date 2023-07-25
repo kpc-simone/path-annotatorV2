@@ -25,7 +25,7 @@ if __name__ == '__main__':
     width = args.width
     extra_time = args.extra_time
     
-sys.path.append(os.path.join(os.path.dirname(__file__),'src'))
+sys.path.insert(0,os.path.join(os.path.dirname(__file__),'src'))
 from image_processing import *
 from visualization import *
 from incrementing import *
@@ -134,7 +134,7 @@ while(True):
         out_data['t-ypos'] = t_ysc
         
         df = pd.DataFrame(data=out_data)        
-        df.interpolate(method='linear',inplace=True)
+        df.interpolate(method='pad',inplace=True)
         
         b,a = signal.butter(5,0.5)
         df['n-xpos'] = signal.filtfilt(b,a,df['n-xpos'],padlen=2)
