@@ -133,8 +133,12 @@ while(True):
         out_data['t-xpos'] = t_xsc
         out_data['t-ypos'] = t_ysc
         
-        df = pd.DataFrame(data=out_data)        
-        df.interpolate(method='pad',inplace=True)
+        df = pd.DataFrame(data=out_data)
+        if df['n-xpos'].notnull().sum(axis=0) / df.shape[0] < 0.05:
+            print('Less than 5% of points labelled, interpolating by padding. For more information, see: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.interpolate.html')
+            df.interpolate(method='pad',inplace=True)
+        else:
+            df.interpolate(method='linear',inplace=True)
         
         b,a = signal.butter(5,0.5)
         df['n-xpos'] = signal.filtfilt(b,a,df['n-xpos'],padlen=2)
