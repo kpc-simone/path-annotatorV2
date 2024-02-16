@@ -1,22 +1,21 @@
 # path-annotator
-Tool for manually-annotating trajectories during defensive behaviors and subsequent feature extraction, analysis, and visualization.
+Tool for manually-annotating trajectories during defensive behaviors in the looming shadow paradigm and subsequent feature extraction, analysis, and visualization.
 
 ## Usage Instructions
 
-1. Generate timing data
-2. Run the script and link timing data
+### Clone this repository and install required packages.
 
-* 1.1 Select video and adjust display
-* 1.2 Identify arena corners
-* 1.3 Annotate trials
+In a terminal, navigate into the folder using the cd commands. Then on the command line, run:
+```
+pip install -r requirements.txt
+```
 
-3. Repeat 1.1-1.3 for as many videos as desired.
+### Generate timing data.
 
-### Generate timing data
-
+Save a copy of the provided manual_trial_keytimings_example.csv file, in the sample-data folder, then modify the rows to match your data. The times indicated in the shadowON-abs and shadowOFF-abs columns should be from the start of the video. 
 ![](https://github.com/kpc-simone/path-annotatorV2/blob/main/docs/keytimings.png)
 
-### Run the script and link timing data
+### Run the script and link timing data.
 
 ```
 python annotate_position_loop.py [arena depth (mm)] [arena width (mm)] [extra time (s)] 
