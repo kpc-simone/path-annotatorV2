@@ -16,6 +16,7 @@ def draw_box(ax,bb):
 behavior_colors = {
 	'escape'	    : '#279edd',
     'panic'         : '#c97330',
+    'attempt'       : '#c97330',    
     'freeze'	    : '#27c687',
 	'no response'	: '#b3b3b3',
     'mistrial'      : 'white',
